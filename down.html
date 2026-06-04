@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forkd — Under Maintenance</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #000000;              /* True Black */
+  --surface: #0a0a0a;         /* Deepest Gray */
+  --surface2: #111111;        /* Dark Gray */
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #ffffff;          /* White accent */
+  --text: #ededed;            /* Crisp off-white */
+  --text-muted: #a1a1a1;      /* Medium gray */
+  --font-ui: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --radius: 8px;
+}
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    /* GRID BACKGROUND */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* HIGH-COLOR GRADIENT GLOW ORBS */
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+      mix-blend-mode: screen;
+    }
+    
+    /* Neon Cyberpunk Palette (Violet & Deep Cyan to elevate the monochrome layout) */
+    .glow-1 { 
+      width: 550px; 
+      height: 550px; 
+      background: radial-gradient(circle, #5b21b6 0%, #1e40af 100%); 
+      top: -10%; 
+      left: 15%; 
+    }
+    .glow-2 { 
+      width: 500px; 
+      height: 500px; 
+      background: radial-gradient(circle, #0369a1 0%, #0f766e 100%); 
+      bottom: 5%; 
+      right: 10%; 
+    }
+
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.8); } }
+    @keyframes textGlow { 0%,100% { text-shadow: 0 0 20px rgba(255,255,255,0.1); } 50% { text-shadow: 0 0 35px rgba(255,255,255,0.25); } }
+
+    /* CONTENT HERO SECTION */
+    .maintenance-hero {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 10px;
+      font-size: 1.1rem; 
+      font-weight: 800; 
+      letter-spacing: -0.03em;
+      color: var(--accent); 
+      margin-bottom: 3.5rem;
+      font-family: var(--font-ui);
+    }
+
+    .logo-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      animation: textGlow 4s ease-in-out infinite;
+    }
+
+    p {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    /* SYSTEM STATUS WRAPPER */
+    .status-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 18px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+      animation: systemPulse 2s infinite;
+    }
+
+    @keyframes systemPulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-orb glow-1"></div>
+  <div class="glow-orb glow-2"></div>
+
+  <div class="maintenance-hero">
+    <div class="logo"><div class="logo-dot"></div>Forkd</div>
+    <h1>Under Repairments</h1>
+    <p>Forkd is temporarily offline for scheduled system updates. We are deploying improvements and will be back shortly.</p>
+    
+    <div class="status-wrapper">
+      <div class="pulse-dot"></div>
+      <span>status://maintenance_in_progress</span>
+    </div>
+  </div>
+
+</body>
+</html>
